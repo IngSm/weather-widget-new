@@ -7,7 +7,7 @@
 
   const store = useStore()
 
-  const drag = ref(false);
+  const drag = ref(false)
   const city = ref('')
   const alert = ref(false)
 
@@ -22,7 +22,7 @@
 
     set(val) {
       store.commit('updateList', val)
-    }
+    },
   })
 
   const addCity = (x: any): void => {
@@ -52,33 +52,31 @@
       <draggable
         :list="myList"
         item-key="city"
-        @start="drag=true" 
-        @end="drag=false"
+        @start="drag = true"
+        @end="drag = false"
         class="display"
       >
-        <template #item="{element, index}">
-        <div
-          class="display__item mt-5"
-        >
-          <div>
-            <img
-              class="icon_small icon_drag"
-              src="@/assets/svgs/drag.svg"
-              alt=""
-            />
+        <template #item="{ element, index }">
+          <div class="display__item mt-5">
+            <div>
+              <img
+                class="icon_small icon_drag"
+                src="@/assets/svgs/drag.svg"
+                alt=""
+              />
+            </div>
+            <div class="display__text">
+              {{ element.city }}
+            </div>
+            <div>
+              <img
+                class="icon_small icon_bin"
+                src="@/assets/svgs/bin.svg"
+                alt=""
+                @click="deleteCity(index)"
+              />
+            </div>
           </div>
-          <div class="display__text">
-            {{element.city}}
-          </div>
-          <div>
-            <img
-              class="icon_small icon_bin"
-              src="@/assets/svgs/bin.svg"
-              alt=""
-              @click="deleteCity(index)"
-            />
-          </div>
-        </div>
         </template>
       </draggable>
     </div>
