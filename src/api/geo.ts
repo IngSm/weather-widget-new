@@ -1,4 +1,4 @@
-let url =
+const url =
   'https://api.geoapify.com/v1/ipinfo?apiKey=e1bfa5d00a624cd8b02ca2740039c892'
 
 const geo = async () => {

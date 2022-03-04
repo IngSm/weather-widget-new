@@ -1,9 +1,75 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+
+  import { useStore } from 'vuex'
+
+  import axios from 'axios'
+
+  import geo from '@/api/geo.ts'
+
+  const store = useStore()
+
+  const open = ref(false)
+  const userCity = {}
+
+  const gottenCitites = store.getters.getCity
+
+  const update = (): void => {
+    let cities: Array<any> = []
+    gottenCitites.forEach((item: any) => {
+      axios
+        .get(
+          `http://api.openweathermap.org/data/2.5/weather?q=${`${item.city}`}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
+        )
+        .then((res) => {
+          cities.push({ city: `${item.city}`, weather: res.data })
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    })
+    store.dispatch('commitUpdateList', cities)
+  }
+
+  onMounted(() => {
+    if (gottenCitites.length == 0) {
+      geo().then((res: any) => {
+        let city = res.city.name
+        axios
+          .get(
+            `http://api.openweathermap.org/data/2.5/weather?q=${`${city}`}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
+          )
+          .then((res) => {
+            console.log(geo)
+            store.dispatch('setCity', { city: city, weather: res.data })
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      })
+    }
+    setInterval(() => {
+      update()
+    }, 3600000)
+  })
+
+  const openMenu = (): void => {
+    open.value = !open.value
+  }
+</script>
 
 <template>
-  <div>1</div>
+  <div id="app">
+    <div v-for="(item, key) in gottenCitites" :key="key" class="container">
+      <div class="clickable" @click="openMenu()" />
+      <div class="second__click" />
+      <div class="mt"><Main :i="key" /></div>
+    </div>
+    <div style="height: 20px" />
+    <Choice v-if="open" @close="open = false" />
+  </div>
 </template>
 
-<style>
-  @import './assets/styles/main.scss';
+<style lang="scss">
+  @use './assets/styles/main.scss';
 </style>
