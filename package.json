@@ -69,6 +69,16 @@
       "oneClick": false,
       "allowToChangeInstallationDirectory": true
     },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
     "files": [
       "dist/**/*",
       "electron/**/*"
