@@ -9,7 +9,7 @@
   "main": "electron/electron.js",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore .",
     "format": "prettier .  --write",
@@ -17,8 +17,8 @@
     "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
     "electron:pack": "electron-builder --dir",
     "electron:dev": "concurrently -k \"cross-env BROWSER=none yarn dev\" \"yarn electron\"",
-    "electron:builder": "electron-builder",
-    "build:for:electron": "vue-tsc --noEmit && cross-env ELECTRON=true vite build",
+    "electron:builder": "electron-builder -mlw",
+    "build:for:electron": "cross-env ELECTRON=true vite build",
     "app:build": "yarn build:for:electron && yarn electron:builder"
   },
   "dependencies": {

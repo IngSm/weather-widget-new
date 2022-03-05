@@ -5,7 +5,7 @@
   import dayjs from 'dayjs'
   import momentjs from 'moment-timezone'
 
-  import Celcius from "@/assets/svgs/celcius.svg"
+  import Celcius from '@/assets/svgs/celcius.svg'
 
   const store = useStore()
 
@@ -72,12 +72,10 @@
     <div class="temp-block mt">
       <div class="temp-block__left">
         <div class="text" v-text="gottenCity[i].weather.weather[0].main" />
-        <div
-          class="text"
-        >
-        Feels:
-        {{gottenCity[i].weather.main.feels_like.toFixed(0)}}
-        <img :src="Celcius" alt="">
+        <div class="text">
+          Feels:
+          {{ gottenCity[i].weather.main.feels_like.toFixed(0) }}
+          <img :src="Celcius" alt="" />
         </div>
       </div>
       <div class="temp-block__right">
@@ -87,11 +85,9 @@
           }"
           class="weather-icon"
         />
-        <div
-          class="temp-block__text"
-        >
-          {{gottenCity[i].weather.main.temp.toFixed(0)}}
-          <img :src="Celcius" alt="">
+        <div class="temp-block__text">
+          {{ gottenCity[i].weather.main.temp.toFixed(0) }}
+          <img :src="Celcius" alt="" />
         </div>
       </div>
     </div>
