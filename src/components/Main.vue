@@ -55,11 +55,11 @@
   <div :style="returnStyle()" class="main">
     <div class="drop-menu">
       <div class="drop-menu__icon drop-menu__item">
-        <img class="icon" src="@/assets/svgs/settings.svg" alt="" />
+        <img class="icon" src="@/assets/svgs/settings.svg" alt="settings" />
         <img
           class="icon second__icon"
           src="@/assets/svgs/drag_whole.svg"
-          alt=""
+          alt="drag"
         />
       </div>
       <div
@@ -105,6 +105,8 @@
   .second__icon {
     margin-left: 10px;
     cursor: grab;
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
   }
 
   .weather-icon {
