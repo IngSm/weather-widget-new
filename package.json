@@ -60,7 +60,7 @@
   },
   "build": {
     "appId": "alexwsd.space",
-    "productName": "WeWi weather-widget",
+    "productName": "WeWi",
     "copyright": "Copyright © 2022 Alexander Gorbunov",
     "mac": {
       "category": "public.app-category.utilities"
