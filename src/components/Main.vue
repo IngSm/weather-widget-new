@@ -5,6 +5,8 @@
   import dayjs from 'dayjs'
   import momentjs from 'moment-timezone'
 
+  import Celcius from "@/assets/svgs/celcius.svg"
+
   const store = useStore()
 
   const props = defineProps<{
@@ -72,12 +74,11 @@
         <div class="text" v-text="gottenCity[i].weather.weather[0].main" />
         <div
           class="text"
-          v-html="
-            `Feels: ${Math.floor(
-              gottenCity[i].weather.main.feels_like
-            )} &#8451;`
-          "
-        />
+        >
+        Feels:
+        {{gottenCity[i].weather.main.feels_like.toFixed(0)}}
+        <img :src="Celcius" alt="">
+        </div>
       </div>
       <div class="temp-block__right">
         <div
@@ -88,8 +89,10 @@
         />
         <div
           class="temp-block__text"
-          v-html="`${gottenCity[i].weather.main.temp.toFixed(0)} &#8451;`"
-        />
+        >
+          {{gottenCity[i].weather.main.temp.toFixed(0)}}
+          <img :src="Celcius" alt="">
+        </div>
       </div>
     </div>
     <div class="clock-block">
