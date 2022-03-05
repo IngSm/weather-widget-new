@@ -6,7 +6,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "allowJs": true,
+    "allowJs": true
   },
   "include": ["vite.config.ts"]
 }
