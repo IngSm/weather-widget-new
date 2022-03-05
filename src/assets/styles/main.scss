@@ -76,6 +76,19 @@
   cursor: pointer;
 }
 
+body::-webkit-scrollbar {
+  width: 5px;
+  background: transparent;
+}
+body::-webkit-scrollbar-button {
+  height: 5px;
+  background: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  border-radius: 5px;
+}
+
 .main {
   min-width: 305px;
   width: 20%;
