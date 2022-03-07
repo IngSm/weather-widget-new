@@ -1,4 +1,4 @@
-import { acceptHMRUpdate ,defineStore } from 'pinia'
+import { acceptHMRUpdate, defineStore } from 'pinia'
 
 interface State {
   cities: Array<any>
@@ -7,13 +7,13 @@ interface State {
 export const useCities = defineStore('cities', {
   state: () => {
     return {
-     cities: []
+      cities: [],
     } as State
   },
   getters: {
     getCity: (state) => {
       return state.cities
-    }
+    },
   },
   actions: {
     setCity(city: object): void {
@@ -24,9 +24,9 @@ export const useCities = defineStore('cities', {
     },
     updateList(value: any): void {
       this.cities = value
-    }
-  }
+    },
+  },
 })
 
 if (import.meta.hot)
-  import.meta.hot.accept(acceptHMRUpdate(useCities, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useCities, import.meta.hot))
