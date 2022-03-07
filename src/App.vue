@@ -1,18 +1,18 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
 
-  import { useStore } from 'vuex'
+  import { useCities } from './stores/citites'
 
   import axios from 'axios'
 
   import geo from '@/api/geo.ts'
 
-  const store = useStore()
+  const store = useCities()
 
   const open = ref(false)
   const userCity = {}
 
-  const gottenCitites = store.getters.getCity
+  const gottenCitites = store.getCity
 
   const update = (): void => {
     let cities: Array<any> = []
@@ -28,7 +28,7 @@
           console.log(e)
         })
     })
-    store.dispatch('commitUpdateList', cities)
+    store.updateList(cities)
   }
 
   onMounted(() => {
@@ -41,7 +41,7 @@
           )
           .then((res) => {
             console.log(geo)
-            store.dispatch('setCity', { city: city, weather: res.data })
+            store.setCity({ city: city, weather: res.data })
           })
           .catch((e) => {
             console.log(e)

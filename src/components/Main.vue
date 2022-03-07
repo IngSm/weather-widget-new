@@ -1,13 +1,13 @@
 <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue'
-  import { useStore } from 'vuex'
+  import { useCities } from '@/stores/citites.ts'
 
   import dayjs from 'dayjs'
   import momentjs from 'moment-timezone'
 
   import Celcius from '@/assets/svgs/celcius.svg'
 
-  const store = useStore()
+  const store = useCities()
 
   const props = defineProps<{
     i: number
@@ -16,7 +16,7 @@
   const city = ref('Novosibirsk')
   const time = ref(dayjs().format('ddd DD MMM YYYY HH:mm:ss'))
   const timeZones = []
-  const gottenCity = store.getters.getCity
+  const gottenCity = store.getCity
 
   const makeClock = (): void => {
     let tz = gottenCity[props.i].weather.timezone
@@ -34,15 +34,8 @@
   })
 
   const returnStyle = (): string => {
-    if (gottenCity[props.i].weather.main.temp.toFixed(0) < 0) {
-      return 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);'
-    } else if (gottenCity[props.i].weather.main.temp.toFixed(0) < 10) {
-      return 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);'
-    } else if (gottenCity[props.i].weather.main.temp.toFixed(0) > 10) {
-      return 'background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);'
-    } else {
-      return ''
-    }
+    //TODO: create function that mutates hex numbers
+    return 'red'
   }
 
   const visibility = computed((): number => {

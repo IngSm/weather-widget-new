@@ -478,7 +478,7 @@
     "@vue/compiler-dom" "3.2.31"
     "@vue/shared" "3.2.31"
 
-"@vue/devtools-api@^6.0.0-beta.11":
+"@vue/devtools-api@^6.0.0-beta.21":
   version "6.0.12"
   resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.12.tgz#7b57cce215ae9f37a86984633b3aa3d595aa5b46"
   integrity sha512-iO/4FIezHKXhiDBdKySCvJVh8/mZPxHpiQrTy+PXVqJZgpTPTdHy4q8GXulaY+UKEagdkBb0onxNQZ0LNiqVhw==
@@ -2652,6 +2652,14 @@ pify@^3.0.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
   integrity sha1-5aSs0sEB/fPZpNB/DbxNtJ3SgXY=
 
+pinia@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/pinia/-/pinia-2.0.11.tgz#ff03c714f5e5f16207280a4fc2eab01f3701ee2b"
+  integrity sha512-JzcmnMqu28PNWOjDgEDK6fTrIzX8eQZKPPKvu/fpHdpXARUj1xeVdFi3YFIMOWswqaBd589cpmAMdSSTryI9iw==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.21"
+    vue-demi "*"
+
 plist@^3.0.1, plist@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/plist/-/plist-3.0.4.tgz#a62df837e3aed2bb3b735899d510c4f186019cbe"
@@ -2661,9 +2669,9 @@ plist@^3.0.1, plist@^3.0.4:
     xmlbuilder "^9.0.7"
 
 postcss@^8.1.10, postcss@^8.4.6:
-  version "8.4.7"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.7.tgz#f99862069ec4541de386bf57f5660a6c7a0875a8"
-  integrity sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==
+  version "8.4.8"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.8.tgz#dad963a76e82c081a0657d3a2f3602ce10c2e032"
+  integrity sha512-2tXEqGxrjvAO6U+CJzDL2Fk2kPHTv1jQsYkSoMeOis2SsYaXRO2COxTdQp99cYvif9JTXaAk9lYGc3VhJt7JPQ==
   dependencies:
     nanoid "^3.3.1"
     picocolors "^1.0.0"
@@ -2957,9 +2965,9 @@ roarr@^2.15.3:
     sprintf-js "^1.1.2"
 
 rollup@^2.59.0:
-  version "2.69.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.69.0.tgz#82aa86682a45e9760146b736c1643bf435506156"
-  integrity sha512-kjER91tHyek8gAkuz7+558vSnTQ+pITEok1P0aNOS45ZXyngaqPsXJmSel4QPQnJo7EJMjXUU1/GErWkWiKORg==
+  version "2.70.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.70.0.tgz#17a92e5938e92a251b962352e904c9f558230ec7"
+  integrity sha512-iEzYw+syFxQ0X9RefVwhr8BA2TNJsTaX8L8dhyeyMECDbmiba+8UQzcu+xZdji0+JQ+s7kouQnw+9Oz5M19XKA==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -3557,6 +3565,11 @@ vscode-vue-languageservice@0.29.8:
     vscode-pug-languageservice "0.29.8"
     vscode-typescript-languageservice "0.29.8"
 
+vue-demi@*:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
+  integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
+
 vue-eslint-parser@^8.0.0, vue-eslint-parser@^8.0.1:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz#5d31129a1b3dd89c0069ca0a1c88f970c360bd0d"
@@ -3595,13 +3608,6 @@ vuedraggable@^4.1.0:
   integrity sha512-FU5HCWBmsf20GpP3eudURW3WdWTKIbEIQxh9/8GE806hydR9qZqRRxRE3RjqX7PkuLuMQG/A7n3cfj9rCEchww==
   dependencies:
     sortablejs "1.14.0"
-
-vuex@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/vuex/-/vuex-4.0.2.tgz#f896dbd5bf2a0e963f00c67e9b610de749ccacc9"
-  integrity sha512-M6r8uxELjZIK8kTKDGgZTYX/ahzblnzC4isU1tpmEuOIIKmV+TRdc+H4s8ds2NuZ7wpUTdGRzJRtoj+lI+pc0Q==
-  dependencies:
-    "@vue/devtools-api" "^6.0.0-beta.11"
 
 wait-on@^6.0.1:
   version "6.0.1"

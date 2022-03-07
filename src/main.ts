@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import { store } from '@/store/store.ts'
+import { createPinia } from 'pinia'
 
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
@@ -28,5 +28,5 @@ app.config.globalProperties = {
   },
 }
 
-app.use(store)
+app.use(createPinia())
 app.mount('#app')

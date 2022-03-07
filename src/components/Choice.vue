@@ -3,9 +3,9 @@
 
   import draggable from 'vuedraggable'
   import axios from 'axios'
-  import { useStore } from 'vuex'
+  import { useCities } from '../stores/citites';
 
-  const store = useStore()
+  const store = useCities()
 
   const drag = ref(false)
   const city = ref('')
@@ -17,11 +17,11 @@
 
   const myList = computed<any>({
     get() {
-      return store.getters.getCity
+      return store.getCity
     },
 
     set(val) {
-      store.commit('updateList', val)
+      store.updateList(val)
     },
   })
 
@@ -31,7 +31,7 @@
         `http://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
       )
       .then((res) => {
-        store.dispatch('setCity', { city: x, weather: res.data })
+        store.setCity({ city: x, weather: res.data })
         emit('close')
       })
       .catch((e) => {
@@ -42,7 +42,7 @@
   }
 
   const deleteCity = (x: any): void => {
-    store.dispatch('deleteCity', x)
+    store.deleteCity(x)
   }
 </script>
 
