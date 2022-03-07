@@ -5,7 +5,7 @@
 
   import axios from 'axios'
 
-  import geo from '@/api/geo.ts'
+  import geo from './api/geo.ts'
 
   const store = useCities()
 
@@ -70,6 +70,6 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
   @use './assets/styles/main.scss';
 </style>
