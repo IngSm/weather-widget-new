@@ -34,8 +34,15 @@
   })
 
   const returnStyle = (): string => {
-    //TODO: create function that mutates hex numbers
-    return 'red'
+    if (gottenCity[props.i].weather.main.temp.toFixed(0) < 0) {
+      return 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);'
+    } else if (gottenCity[props.i].weather.main.temp.toFixed(0) < 10) {
+      return 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);'
+    } else if (gottenCity[props.i].weather.main.temp.toFixed(0) > 10) {
+      return 'background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);'
+    } else {
+      return ''
+    }
   }
 
   const visibility = computed((): number => {

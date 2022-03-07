@@ -3,7 +3,7 @@
 
   import draggable from 'vuedraggable'
   import axios from 'axios'
-  import { useCities } from '../stores/citites';
+  import { useCities } from '../stores/citites'
 
   const store = useCities()
 
