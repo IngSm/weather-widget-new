@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
 
-  import { useCities } from './stores/citites'
+  import { useCities } from '@/stores/citites.ts'
 
   import axios from 'axios'
 
-  import geo from './api/geo.ts'
+  import geo from '@/api/geo.ts'
 
   const store = useCities()
 
@@ -70,6 +70,6 @@
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
   @use './assets/styles/main.scss';
 </style>
