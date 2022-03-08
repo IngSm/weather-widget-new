@@ -6,9 +6,10 @@ import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  // server: {
-  //   host: '0.0.0.0'
-  // },
+  server: {
+    port: 8080,
+    host: '0.0.0.0'
+  },
   base: './',
   build: {
     target: 'esnext',
