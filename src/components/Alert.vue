@@ -1,9 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits(['hide'])
+</script>
 
 <template>
   <div class="main main_modal">
     <div class="text text_modal" v-text="`City not found!`" />
-    <button class="mt" @click="$emit('hide')" v-text="`Ok`" />
+    <button class="mt" @click="emit('hide')" v-text="`Ok`" />
   </div>
 </template>
 

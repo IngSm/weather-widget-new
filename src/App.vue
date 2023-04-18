@@ -2,7 +2,7 @@
   import { ref, onMounted } from 'vue';
 
   import { useCities } from './stores/citites';
-  import { ICity } from './types';
+  import { ICity, IGeo } from './types';
 
   import axios from 'axios';
 
@@ -33,7 +33,7 @@
 
   onMounted(() => {
     if (gottenCitites.length == 0) {
-      geo().then((res: any) => {
+      geo().then((res: IGeo) => {
         let city = res.city.name;
         axios
           .get(
