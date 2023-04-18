@@ -62,7 +62,9 @@
     <div v-for="(item, key) in gottenCitites" :key="key" class="container">
       <div class="clickable" @click="openMenu()" />
       <div class="second__click" />
-      <div class="mt"><Main :i="key" /></div>
+      <div class="mt">
+        <Main :i="key" />
+      </div>
     </div>
     <div style="height: 20px" />
     <Choice v-if="open" @close="open = false" />

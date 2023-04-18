@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const emit = defineEmits(['hide'])
+  const emit = defineEmits(['hide']);
 </script>
 
 <template>

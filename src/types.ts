@@ -11,33 +11,33 @@ export type Wind = {
 };
 
 export type GeoCity = {
-  name: string
-  names: Type
-}
+  name: string;
+  names: Type;
+};
 
 export type GeoCountryLang = {
-  iso_code: string
-  name: string
-  name_native: string
-}
+  iso_code: string;
+  name: string;
+  name_native: string;
+};
 
 export type GeoDataSource = {
-  attribution: string
-  licence: string
-  name: string
-}
+  attribution: string;
+  licence: string;
+  name: string;
+};
 
 export type GeoLocation = {
-  latitude: number
-  longitude: number
-}
+  latitude: number;
+  longitude: number;
+};
 
 export type WeatherInner = {
   description: string;
   icon: string;
   id: number;
   main: string;
-}
+};
 
 export type WeatherMain = {
   feels_like: number;
@@ -46,7 +46,7 @@ export type WeatherMain = {
   temp: number;
   temp_max: number;
   temp_min: number;
-}
+};
 
 export type WeatherSys = {
   country: string;
@@ -54,7 +54,7 @@ export type WeatherSys = {
   sunrise: number;
   sunset: number;
   type: number;
-}
+};
 
 export interface IWeather {
   base: string;
@@ -80,30 +80,30 @@ export interface ICity {
 }
 
 export interface IGeoContinent {
-  code: string
-  geoname_id: number
-  name: string
-  names: Type
+  code: string;
+  geoname_id: number;
+  name: string;
+  names: Type;
 }
 
 export interface IGeoCountry {
-  capital: string
-  currency: string
-  flag: Type
-  geoname_id: string
-  iso_code: string
-  languages: GeoCountryLang[]
-  name: string
-  name_native: string
-  names: Type
-  phone_code: string
+  capital: string;
+  currency: string;
+  flag: Type;
+  geoname_id: string;
+  iso_code: string;
+  languages: GeoCountryLang[];
+  name: string;
+  name_native: string;
+  names: Type;
+  phone_code: string;
 }
 
 export interface IGeo {
-  city: GeoCity
-  continent: IGeoContinent
-  country: IGeoCountry
-  datasource: GeoDataSource
-  ip: string
-  location: GeoLocation
+  city: GeoCity;
+  continent: IGeoContinent;
+  country: IGeoCountry;
+  datasource: GeoDataSource;
+  ip: string;
+  location: GeoLocation;
 }
