@@ -1,49 +1,46 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed } from 'vue';
 
-  import draggable from 'vuedraggable'
-  import axios from 'axios'
-  import { useCities } from '../stores/citites'
+  import draggable from 'vuedraggable';
+  import axios from 'axios';
+  import { useCities } from '../stores/citites';
+  import { ICity } from '../types';
 
-  const store = useCities()
+  const store = useCities();
 
-  const drag = ref(false)
-  const city = ref('')
-  const alert = ref(false)
+  const drag = ref(false);
+  const city = ref('');
+  const alert = ref(false);
 
   const emit = defineEmits<{
-    (close: 'close'): void
-  }>()
+    (close: 'close'): void;
+  }>();
 
-  const myList = computed<any>({
+  const myList = computed<ICity[]>({
     get() {
-      return store.getCity
+      return store.getCity;
     },
 
     set(val) {
-      store.updateList(val)
+      store.updateList(val);
     },
-  })
+  });
 
-  const addCity = (x: any): void => {
+  const addCity = (x: string): void => {
     axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city.value}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
       )
       .then((res) => {
-        store.setCity({ city: x, weather: res.data })
-        emit('close')
+        store.setCity({ city: x, weather: res.data });
+        emit('close');
       })
       .catch((e) => {
-        console.log(e)
-        alert.value = true
-      })
-    city.value = ''
-  }
-
-  const deleteCity = (x: any): void => {
-    store.deleteCity(x)
-  }
+        console.error(e);
+        alert.value = true;
+      });
+    city.value = '';
+  };
 </script>
 
 <template>
@@ -52,9 +49,9 @@
       <draggable
         :list="myList"
         item-key="city"
+        class="display"
         @start="drag = true"
         @end="drag = false"
-        class="display"
       >
         <template #item="{ element, index }">
           <div class="display__item mt-5">
@@ -73,7 +70,7 @@
                 class="icon_small icon_bin"
                 src="@/assets/svgs/bin.svg"
                 alt=""
-                @click="deleteCity(index)"
+                @click="store.deleteCity(index)"
               />
             </div>
           </div>

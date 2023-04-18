@@ -1,32 +1,32 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import App from './App.vue';
 
-import { createPinia } from 'pinia'
+import { createPinia } from 'pinia';
 
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
-dayjs.extend(relativeTime)
-dayjs.extend(utc)
-dayjs.extend(timezone)
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
+dayjs.extend(relativeTime);
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
-import momentjs from 'moment-timezone'
+import momentjs from 'moment-timezone';
 
-const app = createApp(App)
+const app = createApp(App);
 
 app.config.globalProperties = {
   date: {
     get() {
-      return dayjs
+      return dayjs;
     },
   },
   moment: {
     get() {
-      return momentjs
+      return momentjs;
     },
   },
-}
+};
 
-app.use(createPinia())
-app.mount('#app')
+app.use(createPinia());
+app.mount('#app');

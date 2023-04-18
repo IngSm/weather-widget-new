@@ -1,54 +1,54 @@
 <script setup lang="ts">
-  import { ref, computed, onMounted } from 'vue'
-  import { useCities } from '@/stores/citites.ts'
+  import { ref, computed, onMounted } from 'vue';
+  import { useCities } from '@/stores/citites.ts';
 
-  import dayjs from 'dayjs'
-  import momentjs from 'moment-timezone'
+  import dayjs from 'dayjs';
+  import momentjs from 'moment-timezone';
 
-  import Celcius from '@/assets/svgs/celcius.svg'
+  import Celcius from '@/assets/svgs/celcius.svg';
 
-  const store = useCities()
+  const store = useCities();
 
   const props = defineProps<{
-    i: number
-  }>()
+    i: number;
+  }>();
 
-  const city = ref('Novosibirsk')
-  const time = ref(dayjs().format('ddd DD MMM YYYY HH:mm:ss'))
-  const timeZones = []
-  const gottenCity = store.getCity
+  const city = ref('Novosibirsk');
+  const time = ref(dayjs().format('ddd DD MMM YYYY HH:mm:ss'));
+  const timeZones = [];
+  const gottenCity = store.getCity;
 
   const makeClock = (): void => {
-    let tz = gottenCity[props.i].weather.timezone
-    let date = new Date(new Date().getTime() + tz * 1000)
-    time.value = date.toUTCString()
-  }
+    let tz = gottenCity[props.i].weather.timezone;
+    let date = new Date(new Date().getTime() + tz * 1000);
+    time.value = date.toUTCString();
+  };
 
   onMounted(() => {
     setInterval(() => {
-      makeClock()
-    }, 1000)
+      makeClock();
+    }, 1000);
     timeZones.push(
       momentjs.tz.zonesForCountry(gottenCity[props.i].weather.sys.country, true)
-    )
-  })
+    );
+  });
 
   const returnStyle = (): string => {
     if (gottenCity[props.i].weather.main.temp.toFixed(0) < 0) {
-      return 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);'
+      return 'background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);';
     } else if (gottenCity[props.i].weather.main.temp.toFixed(0) < 10) {
-      return 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);'
+      return 'background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);';
     } else if (gottenCity[props.i].weather.main.temp.toFixed(0) > 10) {
-      return 'background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);'
+      return 'background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);';
     } else {
-      return ''
+      return '';
     }
-  }
+  };
 
   const visibility = computed((): number => {
-    let a = gottenCity[props.i].weather.visibility
-    return a / 1000
-  })
+    let a = gottenCity[props.i].weather.visibility;
+    return a / 1000;
+  });
 </script>
 
 <template>
@@ -105,6 +105,7 @@
   .second__icon {
     margin-left: 10px;
     cursor: grab;
+    user-select: none;
     -webkit-user-select: none;
     -webkit-app-region: drag;
   }

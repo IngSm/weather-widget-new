@@ -1,61 +1,60 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted } from 'vue';
 
-  import { useCities } from './stores/citites'
+  import { useCities } from './stores/citites';
+  import { ICity } from './types';
 
-  import axios from 'axios'
+  import axios from 'axios';
 
-  import geo from './api/geo.ts'
+  import geo from './api/geo.ts';
 
-  const store = useCities()
+  const store = useCities();
 
-  const open = ref(false)
-  const userCity = {}
+  const open = ref(false);
 
-  const gottenCitites = store.getCity
+  const gottenCitites = store.getCity;
 
   const update = (): void => {
-    let cities: Array<any> = []
-    gottenCitites.forEach((item: any) => {
+    let cities: Array<ICity> = [];
+    gottenCitites.forEach((item: ICity) => {
       axios
         .get(
           `http://api.openweathermap.org/data/2.5/weather?q=${`${item.city}`}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
         )
         .then((res) => {
-          cities.push({ city: `${item.city}`, weather: res.data })
+          cities.push({ city: `${item.city}`, weather: res.data });
         })
         .catch((e) => {
-          console.log(e)
-        })
-    })
-    store.updateList(cities)
-  }
+          console.error(e);
+        });
+    });
+    store.updateList(cities);
+  };
 
   onMounted(() => {
     if (gottenCitites.length == 0) {
       geo().then((res: any) => {
-        let city = res.city.name
+        let city = res.city.name;
         axios
           .get(
             `http://api.openweathermap.org/data/2.5/weather?q=${`${city}`}&units=metric&APPID=d23058db742db7cb6fe57437bd010579`
           )
           .then((res) => {
-            console.log(geo)
-            store.setCity({ city: city, weather: res.data })
+            store.setCity({ city: city, weather: res.data });
           })
           .catch((e) => {
-            console.log(e)
-          })
-      })
+            console.error(e);
+          });
+      });
     }
     setInterval(() => {
-      update()
-    }, 3600000)
-  })
+      update();
+    }, 3600000);
+  });
 
   const openMenu = (): void => {
-    open.value = !open.value
-  }
+    open.value = !open.value;
+  };
 </script>
 
 <template>
