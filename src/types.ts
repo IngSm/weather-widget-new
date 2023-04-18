@@ -51,6 +51,6 @@ export interface IWeather {
 }
 
 export interface ICity {
-  city: string
-  weather: IWeather
+  city: string;
+  weather: IWeather;
 }

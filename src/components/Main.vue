@@ -13,7 +13,6 @@
     i: number;
   }>();
 
-  const city = ref('Novosibirsk');
   const time = ref(dayjs().format('ddd DD MMM YYYY HH:mm:ss'));
   const timeZones = [];
   const gottenCity = store.getCity;
@@ -44,11 +43,6 @@
       return '';
     }
   };
-
-  const visibility = computed((): number => {
-    let a = gottenCity[props.i].weather.visibility;
-    return a / 1000;
-  });
 </script>
 
 <template>
